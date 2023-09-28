@@ -1,4 +1,4 @@
-export const base_url = 'http://localhost:5000/api/';
+export const base_url = 'https://api-skateshop.vercel.app/api/';
 
 
 const getTokenFromLocalStorage = localStorage.getItem("customer")

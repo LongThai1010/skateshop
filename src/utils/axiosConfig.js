@@ -1,13 +1,14 @@
-export const base_url = 'https://api-skateshop.vercel.app/api/';
-
+export const base_url = "https://gd-skateshop-api.onrender.com/api/";
 
 const getTokenFromLocalStorage = localStorage.getItem("customer")
-    ? JSON.parse(localStorage.getItem("customer"))
-    : null;
+  ? JSON.parse(localStorage.getItem("customer"))
+  : null;
 
 export const config = {
-    headers: {
-        Authorization: `Bearer ${getTokenFromLocalStorage !== null ? getTokenFromLocalStorage.token : ""}`,
-        Accept: "application/json",
-    },
+  headers: {
+    Authorization: `Bearer ${
+      getTokenFromLocalStorage !== null ? getTokenFromLocalStorage.token : ""
+    }`,
+    Accept: "application/json",
+  },
 };

@@ -25,7 +25,7 @@ function Cart() {
       Accept: "application/json",
     },
   };
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(getUserCart(config2));
   }, []);
   const dispatch = useDispatch();

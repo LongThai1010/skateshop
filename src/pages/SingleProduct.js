@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getSingleProduct } from "../features/product/productSlice";
 import { addProdToCart, getUserCart } from "../features/user/userSlice";
+import { addToCart } from "../features/cart/cartSlice";
 
 function SingleProduct() {
   // const [color, setColor] = useState(null)
@@ -24,6 +25,17 @@ function SingleProduct() {
   );
   const cartState = useSelector((state) => state.user.getcartproducts);
 
+  const handleAddToCart = () => {
+    dispath(
+      addToCart({
+        id: getProductId,
+        singleProductState,
+        quantity,
+        price: singleProductState?.price,
+      })
+    );
+  };
+
   const getTokenFromLocalStorage = localStorage.getItem("customer")
     ? JSON.parse(localStorage.getItem("customer"))
     : null;
@@ -38,8 +50,8 @@ function SingleProduct() {
   };
 
   useEffect(() => {
-    dispath(getUserCart(config2));
     dispath(getSingleProduct(getProductId));
+    dispath(getUserCart(config2));
   }, []);
   console.log(cartState);
   // console.log(singleProductState);
@@ -150,13 +162,19 @@ function SingleProduct() {
                         />
                       </>
                     )}
-                    <button
+                    {/* <button
                       className="button"
                       onClick={() => {
                         alreadyAdded ? navigate("/cart") : uploadCart();
                       }}
                     >
                       {alreadyAdded ? "Go To Cart" : "Add to cart"}
+                    </button> */}
+                    <button
+                      className="button"
+                      onClick={() => handleAddToCart()}
+                    >
+                      Add to cart
                     </button>
                   </div>
                   <>

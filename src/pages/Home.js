@@ -14,6 +14,7 @@ import Loading from "react-loading";
 function Home() {
   const productState = useSelector((state) => state.product.product);
   const dispatch = useDispatch();
+  console.log(productState);
 
   const getProducts = () => {
     dispatch(getAllProduct());
@@ -104,7 +105,7 @@ function Home() {
         </div>
       </Container>
 
-      <Container class1="marque-wrapper py-5">
+      <Container class1="marque-wrapper py-5 home-wrapper-1">
         <div className="row">
           <div className="col-12">
             <div className="marquee-inner-wrapper card-wrapper ">

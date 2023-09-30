@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <>
-      <footer className="footer py-3">
+      <footer className="footer py-3 home-wrapper-1">
         <div className="container-xxl">
           <div className="row d-flex align-items-center justify-content-between">
             <div className="col-12 col-xl-5">
@@ -30,7 +30,7 @@ function Footer() {
           </div>
         </div>
       </footer>
-      <footer className="footer py-3">
+      <footer className="footer py-3 home-wrapper-1">
         <div className="container-xxl">
           <div className="row">
             <div className="col-12 col-xl-4">

@@ -11,6 +11,11 @@ import {
   getUserCart,
 } from "../features/user/userSlice";
 import { config } from "../utils/axiosConfig";
+import {
+  addToCart,
+  decreaseCart,
+  removeFromCart,
+} from "../features/cart/cartSlice";
 
 function Cart() {
   const getTokenFromLocalStorage = localStorage.getItem("customer")
@@ -25,14 +30,18 @@ function Cart() {
       Accept: "application/json",
     },
   };
-  useEffect(() => { 
+  useEffect(() => {
     dispatch(getUserCart(config2));
   }, []);
   const dispatch = useDispatch();
   const userCartState = useSelector((state) => state.user.getcartproducts);
+
+  const cartState = useSelector((state) => state.cart);
+  console.log(cartState);
+
   const [productUpdateDetail, setProductUpdateDetail] = useState(null);
   const [totalAmount, setTotalAmount] = useState(null);
-  console.log(userCartState);
+  // console.log(userCartState);
 
   useEffect(() => {
     if (productUpdateDetail !== null) {
@@ -44,7 +53,7 @@ function Cart() {
       );
       setTimeout(() => {
         dispatch(getUserCart(config2));
-      });
+      }, 300);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productUpdateDetail]);
@@ -56,15 +65,28 @@ function Cart() {
     }, 200);
   };
 
+  const handleRemoveFromCart = (cartItem) => {
+    dispatch(removeFromCart(cartItem));
+  };
+
+  const handleDecreaseCart = (cartItem) => {
+    dispatch(decreaseCart(cartItem));
+  };
+
+  const handleIncreaseCart = (cartItem) => {
+    dispatch(addToCart(cartItem));
+  };
+
   useEffect(() => {
     let sum = 0;
-    for (let index = 0; index < userCartState?.length; index++) {
+    for (let index = 0; index < cartState?.cartItems?.length; index++) {
       sum =
         sum +
-        Number(userCartState[index].quantity) * userCartState[index].price;
+        Number(cartState?.cartItems[index].quantity) *
+          cartState?.cartItems[index].price;
       setTotalAmount(sum);
     }
-  }, [userCartState]);
+  }, [cartState]);
 
   return (
     <>
@@ -74,7 +96,12 @@ function Cart() {
       <div className="cart-wrapper py-3">
         <div className="container-xxl">
           <div className="row">
-            <h3 className="col-12">Cart of your</h3>
+            <h3 className="col-12 text-center mb-5">
+              {" "}
+              {cartState.cartItems?.length === 0 && (
+                <div className="">Cart of your is empty</div>
+              )}
+            </h3>
             <div className=" col-xl-12">
               <div className="cart-header d-flex justify-content-between align-items-center">
                 <h4 className="cart-col-1">Image && Product </h4>
@@ -82,7 +109,8 @@ function Cart() {
                 <h4 className="cart-col-2">Quantity</h4>
                 <h4 className="cart-col-2">Total</h4>
               </div>
-              {userCartState?.map((item, index) => {
+
+              {cartState.cartItems?.map((item, index) => {
                 return (
                   <div
                     className="cart-data py-3 d-flex justify-content-between align-items-center"
@@ -91,41 +119,60 @@ function Cart() {
                     <h4 className="cart-col-1  d-flex align-items-center justify-content-center">
                       <div className="cart-image">
                         <img
-                          alt={item?.productId?.title}
-                          src={item?.productId?.images[0]?.url}
+                          alt={item?.singleProductState?.title}
+                          src={item?.singleProductState?.images[0]?.url}
                         />
                       </div>
                       <div className="w-50 cart-title">
-                        <h5>{item?.productId?.title}</h5>
+                        <h5>{item?.singleProductState?.title}</h5>
                       </div>
                     </h4>
                     <h4 className="cart-col-2 cart-price">
-                      <div className="price">{item?.productId?.price}$</div>
+                      <div className="price">
+                        {item?.singleProductState?.price}$
+                      </div>
                     </h4>
                     <h4 className="cart-col-2 cart-total">
                       <div className="d-flex gap-30 align-items-center">
-                        <div>
+                        <div className="cart-product-quantity">
+                          <button onClick={() => handleDecreaseCart(item)}>
+                            -
+                          </button>
+                          <div className="count">{item?.quantity}</div>
+                          <button onClick={() => handleIncreaseCart(item)}>
+                            +
+                          </button>
+                        </div>
+                        {/* <div>
                           <input
                             type="number"
                             className="form-control cart-quantity"
-                            name={"quantity" + item?._id}
-                            id={"cart" + item?._id}
+                            // name={"quantity" + item?._id}
+                            // id={"cart" + item?._id}
                             min={1}
                             max={10}
                             value={item?.quantity}
                             onChange={(e) =>
-                              setProductUpdateDetail({
-                                cartItemId: item?._id,
-                                quantity: e.target.value,
-                              })
+                              // setProductUpdateDetail({
+                              //   cartItemId: item?._id,
+                              //   quantity: e.target.value,
+                              // })
+                              {
+                                handleDecreaseCart(item);
+                              }
                             }
                           />
-                        </div>
+                        </div> */}
                         <div>
                           <AiFillDelete
                             className="text-danger icon-delete-cart"
+                            // onClick={() => {
+
+                            //   deleteACartProduct(item?._id);
+                            // }}
                             onClick={() => {
-                              deleteACartProduct(item?._id);
+                              // eslint-disable-next-line no-undef
+                              handleRemoveFromCart(item);
                             }}
                           />
                         </div>

@@ -21,6 +21,8 @@ function Header() {
   const wishlistState = useSelector((state) => state?.user?.wishlist?.wishlist);
   const productState = useSelector((state) => state?.product?.product);
 
+  const cartState = useSelector((state) => state.cart.cartItems);
+
   console.log(userState);
   const [productOpt, setProductOpt] = useState([]);
   const [total, setTotal] = useState(null);
@@ -86,7 +88,7 @@ function Header() {
           </div>
         </div>
       </header> */}
-      <header className="header">
+      <header className="header home-wrapper-1">
         <div className="container-xxl">
           <div className="d-flex align-items-center justify-content-between header-container">
             <div className="header-icon-bar">
@@ -151,7 +153,7 @@ function Header() {
                     <AiOutlineShoppingCart className="icon-header" />
 
                     <span className="badge text-danger sub-total">
-                      {userCartState?.length ? userCartState.length : <></>}
+                      {cartState?.length ? cartState.length : <></>}
                     </span>
                   </Link>
                 </div>

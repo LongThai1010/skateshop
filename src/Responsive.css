@@ -14,7 +14,8 @@
     padding: 0 !important;
     height: 60px;
 
-    box-shadow: 0 2px 5px -3px var(--color-primary);
+    box-shadow: rgba(43, 52, 69, 0.1) 0px 4px 16px;
+    ;
   }
 
   .header-container {

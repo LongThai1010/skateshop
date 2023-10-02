@@ -46,7 +46,14 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="checkout" element={<CheckOut />} />
+            <Route
+              path="checkout"
+              element={
+                <PrivateRoute>
+                  <CheckOut />
+                </PrivateRoute>
+              }
+            />
             <Route
               path="signup"
               element={

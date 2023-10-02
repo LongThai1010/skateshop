@@ -23,10 +23,11 @@ function Header() {
 
   const cartState = useSelector((state) => state.cart.cartItems);
 
-  console.log(userState);
+  // console.log(userState);
   const [productOpt, setProductOpt] = useState([]);
   const [total, setTotal] = useState(null);
   const [paginate, setPaginate] = useState(true);
+  const [sidebar, setSidebar] = useState(false);
 
   useEffect(() => {
     let sum = 0;
@@ -92,7 +93,10 @@ function Header() {
         <div className="container-xxl">
           <div className="d-flex align-items-center justify-content-between header-container">
             <div className="header-icon-bar">
-              <HiOutlineBars3CenterLeft className="icon-header" />
+              <HiOutlineBars3CenterLeft
+                className="icon-header"
+                onClick={() => setSidebar(!sidebar)}
+              />
             </div>
             <div>
               <Link className="header-logo" to="/">
@@ -191,6 +195,30 @@ function Header() {
           </div>
         </div>
       </header>
+      <div className={sidebar ? "navbar-ui active" : "navbar-ui"}>
+        <nav>
+          <ul onClick={() => sidebar}>
+            <li>
+              <Link to="/product">Our Store</Link>
+            </li>
+            <li>
+              <Link to="/wishlist">wishlist</Link>
+            </li>
+
+            <li>
+              <Link to="/my-orders">Orders</Link>
+            </li>
+
+            <li>
+              <Link to="/">Login</Link>
+            </li>
+
+            <li>
+              <Link to="/">Logout</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </>
   );
 }

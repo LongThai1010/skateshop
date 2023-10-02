@@ -62,16 +62,6 @@ function ProductCard(props) {
                   <p className="price">{item?.price}$</p>
                 </div>
               </div>
-              <div className="action-bar position-absolute">
-                <div className="d-flex flex-column gap-15">
-                  <Link
-                    to={"/product/" + item?._id}
-                    className="border-0 bg-transparent"
-                  >
-                    <img src="images/view.svg" alt="" />
-                  </Link>
-                </div>
-              </div>
             </Link>
           </div>
         );

@@ -79,7 +79,7 @@ p {
 
 .header {
   height: 80px;
- 
+
 }
 
 .header-container {
@@ -284,13 +284,19 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 
 .service-item {
   display: flex;
   gap: 15px;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
+
+
 
 
 /* /* Home wrapper 1 */
@@ -729,6 +735,28 @@ p {
   cursor: pointer;
 }
 
+.cart-product-quantity {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.cart-product-negative,
+.cart-product-plus {
+  border: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+}
+
+.cart-product-negative:hover,
+.cart-product-plus:hover {
+  transition: 0.2s ease-in-out;
+  background-color: #ccc;
+}
+
+
 /* wishlist */
 
 .wishlist-card-image img {
@@ -745,3 +773,52 @@ p {
   color: var(--color-bf4800);
 
 }
+
+
+/* Slideshow */
+.react-slideshow-container .nav:first-of-type {
+  left: 20px !important;
+}
+
+.react-slideshow-container .nav:last-of-type {
+  right: 20px !important;
+}
+
+.react-slideshow-container .default-nav {
+  background-color: transparent !important;
+}
+
+/* Navbar */
+
+.navbar-ui {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: #131921;
+  left: -100%;
+  top: 60px;
+  transition: 850ms;
+
+  z-index: 10;  
+}
+
+.navbar-ui.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.navbar-ui ul {
+  list-style-type: none;
+  padding: 0 12px;
+}
+
+.navbar-ui li {
+  display: block;
+  padding: 14px 0;
+}
+
+.navbar-ui li a {
+  color: #ededed;
+}
+
+/* Breadcumb */

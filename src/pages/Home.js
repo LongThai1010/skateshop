@@ -10,11 +10,11 @@ import { getAllProduct } from "../features/product/productSlice";
 import { useEffect, useState } from "react";
 import { dataBrand } from "../utils/DataBrands";
 import Loading from "react-loading";
+import { Slideshow } from "../components/Slideshow";
 
 function Home() {
   const productState = useSelector((state) => state.product.product);
   const dispatch = useDispatch();
-  console.log(productState);
 
   const getProducts = () => {
     dispatch(getAllProduct());
@@ -85,7 +85,9 @@ function Home() {
         </div>
       </Container>
 
-      <Container class1="home-wrapper-2 py-5">
+      {/* <Slideshow></Slideshow> */}
+
+      <Container class1="home-wrapper-2 py-5 mt-5">
         <div className="row">
           <div className="col-12 col-xl-12">
             <div className="service">
@@ -105,7 +107,8 @@ function Home() {
         </div>
       </Container>
 
-      <Container class1="marque-wrapper py-5 home-wrapper-1">
+      <Container class1="marque-wrapper py-5 my-3 home-wrapper-1">
+        {/* <h5 className="col-12 text-center">Sponsor Brands </h5> */}
         <div className="row">
           <div className="col-12">
             <div className="marquee-inner-wrapper card-wrapper ">

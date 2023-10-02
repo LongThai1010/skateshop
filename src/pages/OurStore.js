@@ -259,7 +259,7 @@ function OurStore() {
                   />
                 </div>
 
-                <ReactPaginate
+                {/* <ReactPaginate
                   previousLabel="Previous"
                   nextLabel="Next"
                   pageClassName="page-item"
@@ -277,7 +277,7 @@ function OurStore() {
                   //   onPageChange={handlePageChange}
                   containerClassName="pagination"
                   activeClassName="active"
-                />
+                /> */}
               </div>
             </div>
           </div>

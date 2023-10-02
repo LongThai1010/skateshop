@@ -90,8 +90,8 @@ function Cart() {
 
   return (
     <>
-      <Meta title={"Cart"} />
       <BreadCrumb title="Cart" />
+      <Meta title={"Cart"} />
 
       <div className="cart-wrapper py-3">
         <div className="container-xxl">
@@ -135,11 +135,17 @@ function Cart() {
                     <h4 className="cart-col-2 cart-total">
                       <div className="d-flex gap-30 align-items-center">
                         <div className="cart-product-quantity">
-                          <button onClick={() => handleDecreaseCart(item)}>
+                          <button
+                            className="cart-product-negative"
+                            onClick={() => handleDecreaseCart(item)}
+                          >
                             -
                           </button>
                           <div className="count">{item?.quantity}</div>
-                          <button onClick={() => handleIncreaseCart(item)}>
+                          <button
+                            className="cart-product-plus"
+                            onClick={() => handleIncreaseCart(item)}
+                          >
                             +
                           </button>
                         </div>

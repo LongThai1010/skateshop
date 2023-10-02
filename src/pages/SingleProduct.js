@@ -191,21 +191,6 @@ function SingleProduct() {
           </div>
         </div>
       </div>
-
-      <section className="polular-wrapper home-wrapper-2 py-5">
-        <div className="container-xxl">
-          <div className="row">
-            <div className="col-12">
-              <h3 className="section-heading">Polular our Product</h3>
-            </div>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-          </div>
-          <div className="row"></div>
-        </div>
-      </section>
     </>
   );
 }

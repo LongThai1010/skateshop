@@ -1,4 +1,14 @@
 @media screen and (max-width: 576px) {
+  /* Banner */
+
+  .banner {
+    margin-top: 60px;
+  }
+
+  .main-banner {
+    display: none;
+  }
+
   .breadcrumb {
     margin-top: 60px;
     margin-bottom: 0 !important;

@@ -12,10 +12,11 @@ const divStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  backgroundSize: "cover",
+  backgroundSize: "100% auto",
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
-  height: "100vh",
+  width: "100%",
+  height: "90vh",
 };
 const slideImages = [
   {
@@ -27,7 +28,7 @@ const slideImages = [
     // caption: "Slide 2",
   },
   {
-    url: "C:UsersAdminDocumentsanh GDScreenshot 2023-10-01 122547.png",
+    url: "https://f5-zpcloud.zdn.vn/6837458964246438050/f490434c2de9eeb7b7f8.jpg",
     // caption: "Slide 3",
   },
 ];

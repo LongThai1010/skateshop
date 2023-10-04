@@ -197,7 +197,7 @@ function Header() {
       </header>
       <div className={sidebar ? "navbar-ui active" : "navbar-ui"}>
         <nav>
-          <ul onClick={() => sidebar}>
+          <ul onClick={() => setSidebar(!sidebar)}>
             <li>
               <Link to="/product">Our Store</Link>
             </li>
@@ -210,12 +210,22 @@ function Header() {
             </li>
 
             <li>
-              <Link to="/">Login</Link>
+              <Link to="/login">Login</Link>
             </li>
-
-            <li>
-              <Link to="/">Logout</Link>
-            </li>
+            {userState.user ? (
+              <button
+                onClick={handleLogout}
+                to="/logout"
+                type="button"
+                className="border border-0 bg-transparent text-white"
+              >
+                <li>
+                  <Link to="/">Logout</Link>
+                </li>
+              </button>
+            ) : (
+              <></>
+            )}
           </ul>
         </nav>
       </div>

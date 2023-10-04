@@ -14,11 +14,14 @@ import { Slideshow } from "../components/Slideshow";
 
 function Home() {
   const productState = useSelector((state) => state.product.product);
+  const loadingProduct = useSelector((state) => state.product.isLoading);
   const dispatch = useDispatch();
 
   const getProducts = () => {
     dispatch(getAllProduct());
   };
+
+  console.log(loadingProduct);
 
   useEffect(() => {
     getProducts();
@@ -26,12 +29,28 @@ function Home() {
   }, []);
   return (
     <>
-      <Container class1="home-wrapper-1 py-5">
-        <div className="row">
+      <div className="banner">
+        <div className="row-1">
+          <div className="col-12 col-xl-6">
+            <div className="main-banner-1 position-relative ">
+              <img
+                className="img-banner"
+                alt="small-banner"
+                src="Banner/banner2.jpg"
+              />
+              <div className="main-banner-content-1 position-absolute">
+                <h4>GD HOMIES</h4>
+
+                <Link to={`http://gdskateboard.cf`} className="button">
+                  Follow Me
+                </Link>
+              </div>
+            </div>
+          </div>
           <div className="col-12 col-xl-6">
             <div className="main-banner position-relative ">
               <img
-                className="img-fluid rounded-3"
+                className="img-banner"
                 alt="small-banner"
                 src="Banner/banner3.jpg"
               />
@@ -44,7 +63,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="col-12 col-xl-6">
+          {/* <div className="col-12 col-xl-6">
             <div className="banner-small">
               <div className="small-banner position-relative">
                 <img
@@ -81,10 +100,9 @@ function Home() {
                 <div className="small-banner-content position-absolute"></div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
-      </Container>
-
+      </div>
       {/* <Slideshow></Slideshow> */}
 
       <Container class1="home-wrapper-2 py-5 mt-5">
@@ -104,6 +122,16 @@ function Home() {
               })}
             </div>
           </div>
+        </div>
+      </Container>
+
+      <Container class1="featured-wrapper home-wrapper-2 py-5">
+        <div className="row">
+          <div className="col-12">
+            <h3 className="section-heading">Featured Collection</h3>
+          </div>
+          {loadingProduct ? <Loading color="black" type="cubes" /> : ""}
+          <ProductCard data={productState} />
         </div>
       </Container>
 
@@ -128,15 +156,6 @@ function Home() {
         </div>
       </Container>
 
-      <Container class1="featured-wrapper home-wrapper-2 py-5">
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Featured Collection</h3>
-          </div>
-          <ProductCard data={productState} />
-        </div>
-      </Container>
-
       {/* <Container class1="special-wrapper home-wrapper-2 py-5">
         <div className="row">
           <div className="col-12">
@@ -155,6 +174,7 @@ function Home() {
           <div className="col-12">
             <h3 className="section-heading">Polular our Product</h3>
           </div>
+          {loadingProduct ? <Loading color="black" type="cubes" /> : ""}
           <ProductCard data={productState} />
         </div>
         <div className="row"></div>

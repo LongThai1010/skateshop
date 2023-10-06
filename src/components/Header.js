@@ -91,7 +91,7 @@ function Header() {
       </header> */}
       <header className="header home-wrapper-1">
         <div className="container-xxl">
-          <div className="d-flex align-items-center justify-content-between header-container">
+          <div className="d-flex align-items-center justify-content-between">
             <div className="header-icon-bar">
               <HiOutlineBars3CenterLeft
                 className="icon-header"
@@ -100,11 +100,16 @@ function Header() {
             </div>
             <div>
               <Link className="header-logo" to="/">
-                GD HOMIES
+                <img
+                  src="images/logo-gd-fix.png"
+                  alt="Logo"
+                  width={60}
+                  height={60}
+                />
+                <span>GD HOMIES</span>
               </Link>
             </div>
-
-            <div className="">
+            <div>
               <div className="input-group ">
                 <Typeahead
                   id="pagination-example"
@@ -123,7 +128,7 @@ function Header() {
                 </span>
               </div>
             </div>
-            <div className="">
+            <div>
               <div className="header-upper-links d-flex gap-15 align-items-center">
                 <div className="header-icon-wishlist">
                   <Link to="/wishlist" className="d-flex align-items-center ">
@@ -136,7 +141,7 @@ function Header() {
                 <div>
                   <Link
                     to={userState?.user === null ? "/login" : "/my-profile"}
-                    className="d-flex align-items-center flex-column text-white "
+                    className="d-flex align-items-center  flex-column text-white icon-user"
                   >
                     <AiOutlineUser className="icon-header" />
                     {userState?.user === null ? (

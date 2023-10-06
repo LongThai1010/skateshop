@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { dataBrand } from "../utils/DataBrands";
 import Loading from "react-loading";
 import { Slideshow } from "../components/Slideshow";
+import Slider from "../components/Slider";
 
 function Home() {
   const productState = useSelector((state) => state.product.product);
@@ -29,7 +30,9 @@ function Home() {
   }, []);
   return (
     <>
-      <div className="banner">
+      <Slider />
+      {/* <Slideshow></Slideshow> */}
+      {/* <div className="banner">
         <div className="row-1">
           <div className="col-12 col-xl-6">
             <div className="main-banner-1 position-relative ">
@@ -63,7 +66,7 @@ function Home() {
               </div>
             </div>
           </div>
-          {/* <div className="col-12 col-xl-6">
+          <div className="col-12 col-xl-6">
             <div className="banner-small">
               <div className="small-banner position-relative">
                 <img
@@ -100,10 +103,9 @@ function Home() {
                 <div className="small-banner-content position-absolute"></div>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
-      </div>
-      {/* <Slideshow></Slideshow> */}
+      </div> */}
 
       <Container class1="home-wrapper-2 py-5 mt-5">
         <div className="row">

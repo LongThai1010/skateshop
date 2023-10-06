@@ -26,7 +26,7 @@
 
   .header {
     position: fixed;
-    padding: 0 !important;
+    padding: 0 10px !important;
     height: 60px;
     top: 0;
     left: 0;
@@ -35,14 +35,18 @@
     z-index: 102;
     background-color: #fff;
     margin-bottom: 48px;
+    line-height: 60px;
+    overflow: hidden;
   }
 
-  .header-container {
-    line-height: 60px;
-  }
+
 
   .header-logo {
     font-size: 18px;
+  }
+
+  .header-logo span {
+    display: none;
   }
 
   .input-group {
@@ -53,6 +57,10 @@
 
   .header-icon-wishlist {
     display: none;
+  }
+
+  .icon-user {
+    display: none !important;
   }
 
   /* Banner */

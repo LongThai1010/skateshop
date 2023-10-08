@@ -89,84 +89,80 @@ function Header() {
           </div>
         </div>
       </header> */}
-      <header className="header home-wrapper-1">
-        <div className="container-xxl">
-          <div className="d-flex align-items-center justify-content-between">
-            <div className="header-icon-bar">
-              <HiOutlineBars3CenterLeft
-                className="icon-header"
-                onClick={() => setSidebar(!sidebar)}
-              />
-            </div>
-            <div>
-              <Link className="header-logo" to="/">
-                <img
-                  src="images/logo-gd-fix.png"
-                  alt="Logo"
-                  width={60}
-                  height={60}
-                />
-                <span>GD HOMIES</span>
+      <header className="header">
+        <div className="header-icon-bar">
+          <HiOutlineBars3CenterLeft
+            className="icon-header"
+            onClick={() => setSidebar(!sidebar)}
+          />
+        </div>
+        <div>
+          <Link className="header-logo" to="/">
+            <img
+              src="images/logo-gd-fix.png"
+              alt="Logo"
+              width={60}
+              height={60}
+            />
+            <span>GD HOMIES</span>
+          </Link>
+        </div>
+        <div>
+          <div className="input-group ">
+            <Typeahead
+              id="pagination-example"
+              onPaginate={() => console.log("Results paginated")}
+              onChange={(seleted) => {
+                navigate(`/product/${seleted[0]?.prod}`);
+              }}
+              options={productOpt}
+              paginate={paginate}
+              minLength={5}
+              labelKey={"title"}
+              placeholder="Search for product..."
+            />
+            <span className="input-group-text p-3" id="basic-addon2">
+              <BsSearch className="fs-6" />
+            </span>
+          </div>
+        </div>
+        <div>
+          <div className="header-upper-links d-flex gap-15 align-items-center">
+            <div className="header-icon-wishlist">
+              <Link to="/wishlist" className="d-flex align-items-center ">
+                <AiOutlineHeart className="icon-header" />
+                <span className="badge text-danger sub-wishlist">
+                  {wishlistState?.length ? wishlistState.length : <></>}
+                </span>
               </Link>
             </div>
             <div>
-              <div className="input-group ">
-                <Typeahead
-                  id="pagination-example"
-                  onPaginate={() => console.log("Results paginated")}
-                  onChange={(seleted) => {
-                    navigate(`/product/${seleted[0]?.prod}`);
-                  }}
-                  options={productOpt}
-                  paginate={paginate}
-                  minLength={5}
-                  labelKey={"title"}
-                  placeholder="Search for product..."
-                />
-                <span className="input-group-text p-3" id="basic-addon2">
-                  <BsSearch className="fs-6" />
-                </span>
-              </div>
+              <Link
+                to={userState?.user === null ? "/login" : "/my-profile"}
+                className="d-flex align-items-center  flex-column text-white icon-user"
+              >
+                <AiOutlineUser className="icon-header" />
+                {userState?.user === null ? (
+                  <></>
+                ) : (
+                  <p className="mb-0 text-dark">
+                    {/* welcome, {userState?.user?.firstname} */}
+                  </p>
+                )}
+              </Link>
             </div>
-            <div>
-              <div className="header-upper-links d-flex gap-15 align-items-center">
-                <div className="header-icon-wishlist">
-                  <Link to="/wishlist" className="d-flex align-items-center ">
-                    <AiOutlineHeart className="icon-header" />
-                    <span className="badge text-danger sub-wishlist">
-                      {wishlistState?.length ? wishlistState.length : <></>}
-                    </span>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    to={userState?.user === null ? "/login" : "/my-profile"}
-                    className="d-flex align-items-center  flex-column text-white icon-user"
-                  >
-                    <AiOutlineUser className="icon-header" />
-                    {userState?.user === null ? (
-                      <></>
-                    ) : (
-                      <p className="mb-0 text-dark">
-                        {/* welcome, {userState?.user?.firstname} */}
-                      </p>
-                    )}
-                  </Link>
-                </div>
 
-                <div className="header-icon">
-                  <Link
-                    to="/cart"
-                    className="d-flex align-items-center gap-10 text-white"
-                  >
-                    <AiOutlineShoppingCart className="icon-header" />
+            <div className="header-icon">
+              <Link
+                to="/cart"
+                className="d-flex align-items-center gap-10 text-white"
+              >
+                <AiOutlineShoppingCart className="icon-header" />
 
-                    <span className="badge text-danger sub-total">
-                      {cartState?.length ? cartState.length : <></>}
-                    </span>
-                  </Link>
-                </div>
-              </div>
+                <span className="badge text-danger sub-total">
+                  {cartState?.length ? cartState.length : <></>}
+                </span>
+              </Link>
             </div>
           </div>
         </div>
@@ -179,7 +175,7 @@ function Header() {
                 <div className="d-flex align-items-center gap-15">
                   <NavLink to="/">Home</NavLink>
                   <NavLink to="/product">Store</NavLink>
-                  <NavLink to="/contact">Contact</NavLink>
+                  <NavLink to="/contact">GD HOMIES</NavLink>
                   <NavLink to="/my-orders">My orders</NavLink>
 
                   {userState.user ? (

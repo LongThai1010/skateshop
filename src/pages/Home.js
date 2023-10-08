@@ -30,9 +30,9 @@ function Home() {
   }, []);
   return (
     <>
-      <Slider />
+      {/* <Slider /> */}
       {/* <Slideshow></Slideshow> */}
-      {/* <div className="banner">
+      <div className="banner">
         <div className="row-1">
           <div className="col-12 col-xl-6">
             <div className="main-banner-1 position-relative ">
@@ -44,7 +44,7 @@ function Home() {
               <div className="main-banner-content-1 position-absolute">
                 <h4>GD HOMIES</h4>
 
-                <Link to={`http://gdskateboard.cf`} className="button">
+                <Link to={`/contact`} className="button">
                   Follow Me
                 </Link>
               </div>
@@ -66,7 +66,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <div className="col-12 col-xl-6">
+          {/* <div className="col-12 col-xl-6">
             <div className="banner-small">
               <div className="small-banner position-relative">
                 <img
@@ -103,9 +103,9 @@ function Home() {
                 <div className="small-banner-content position-absolute"></div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
-      </div> */}
+      </div>
 
       <Container class1="home-wrapper-2 py-5 mt-5">
         <div className="row">

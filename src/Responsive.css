@@ -332,6 +332,25 @@
     display: block;
   } */
 
+  .image-main {
+    margin-top: 60px;
+  }
+
+  .info-overview {
+    font-size: 8px;
+  }
+
+  .hood-image {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .hood-image img {
+    width: 100%;
+    object-fit: inherit;
+    height: 50vh;
+  }
+
 }
 
 @media screen and (min-width: 577px) {

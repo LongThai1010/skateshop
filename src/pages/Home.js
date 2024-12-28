@@ -4,7 +4,7 @@ import BlogCard from "../components/BlogCard";
 import ProductCard from "../components/ProductCard";
 import SpecialProduct from "../components/SpecialProduct";
 import Container from "../components/Container";
-import { serverices } from "../utils/Data";
+import { serverices } from "../utils/DataServices";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProduct } from "../features/product/productSlice";
 import { useEffect, useState } from "react";
@@ -127,16 +127,6 @@ function Home() {
         </div>
       </Container>
 
-      <Container class1="featured-wrapper home-wrapper-2 py-5">
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Featured Collection</h3>
-          </div>
-          {loadingProduct ? <Loading color="black" type="cubes" /> : ""}
-          <ProductCard data={productState} />
-        </div>
-      </Container>
-
       <Container class1="marque-wrapper py-5 my-3 home-wrapper-1">
         {/* <h5 className="col-12 text-center">Sponsor Brands </h5> */}
         <div className="row">
@@ -146,8 +136,8 @@ function Home() {
                 {dataBrand?.map((item, index) => {
                   return (
                     <>
-                      <div key={index} className="mx-4 w-50">
-                        <img src={item?.image} alt="brand" />
+                      <div key={index} className="mx-4 w-100">
+                        <img src={item?.image} alt="brand" height={200} />
                       </div>
                     </>
                   );
@@ -155,6 +145,16 @@ function Home() {
               </Marquee>
             </div>
           </div>
+        </div>
+      </Container>
+
+      <Container class1="featured-wrapper home-wrapper-2 py-5">
+        <div className="row">
+          <div className="col-12">
+            <h3 className="section-heading">Featured Collection</h3>
+          </div>
+          {loadingProduct ? <Loading color="black" type="cubes" /> : ""}
+          <ProductCard data={productState} />
         </div>
       </Container>
 

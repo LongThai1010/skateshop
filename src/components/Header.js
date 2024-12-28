@@ -167,7 +167,7 @@ function Header() {
           </div>
         </div>
       </header>
-      <header className="header-bottom py-3">
+      {/* <header className="header-bottom py-3">
         <div className="container-xxl">
           <div className="row ">
             <div className="col-12 d-flex justify-content-center">
@@ -195,7 +195,7 @@ function Header() {
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
       <div className={sidebar ? "navbar-ui active" : "navbar-ui"}>
         <nav>
           <ul onClick={() => setSidebar(!sidebar)}>
